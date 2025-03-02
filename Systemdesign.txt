@@ -1,0 +1,34 @@
+Orderbooks are in memory they are not stored in Database.
+Orderbooks are a variable in a Rust/Golang/JS process 
+A single threaded process. 
+The bids and the asks are not stored in a database at all, they are stored as a variable in a process 
+const orderbook = {
+    bids: [],
+    asks: []
+}
+
+Orderbooks are need to really fast, thats why we have inmemory orderbooks
+Any time the order comes, we match the order to the current orderbook and place the order on the order to the asks or bids if the order doesnt match the asks or bids return to the user
+The down side of this approach is, if the server dies the inmemory variable dies with it. 
+How will you recreate the state if the server dies ? 
+You need to ensure you have stored the orders somewhere, so that you can recreate the state from it, you also need to make sure you immediately return to the something has happened.
+There are several approaches, the approach that we will take is, that when that the order comes, the order will count to an api server
+you can have multiple servers, you can scale the servers, whenever a request comes rather than updating the inmemory variable here 
+the apiserver has to tell the orderbook a fresh order has come please process this order and this communication happens via queue, the queue is our storage mechanism
+The queue is something we persist forever, ki yaar all the events that are happpened since the exchange started every order that was placed went through this queue to the Orderbook
+and hence this queue is our source of truth, if you ever want to recreate state, if you ever want recreate current state of the orderbook if it goes down, you can go through all of the events that happened from the beginning 
+and recreate the current orderbook, that exists before the process died 
+
+This is how we achieve persistance, ki you first send it to a queue, redis queues 
+The order that the users placed, the order reached the api server, the server fetches the user cookies understood who the user was attach the user id, created a random order id 
+attach the orderid and put this onto a queue, the orderbook is the separate process running somewhere else 
+any time a order happens, a swap of assets happen, the orderbook push the details of the order onto another queue, ki these are the events that happened 
+this queue is what the websocket server then reads from, then the websocket lets the user know that half of our order have been placed, or the orderbook has been updated to the updated quantities 
+
+Whenever you send a request it reaches the orderbook, and if the order is partially filled, fully filled, whatever happened the user needs to get back this information
+that why the api server is also connected to the orderbook server 
+
+In orderbook, we have to maintain bids, match bids, find the best offer for a person and then match it to the order.
+
+When the user places a market order, you make sure there order get immediately placed or gets canceled, under the hood the market order is also a limit order
+the order shouldnt ne partially filled, that is what the kind field in the zod type, they can send a ioc flag (immediate or cancel)

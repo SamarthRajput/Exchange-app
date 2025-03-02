@@ -1,0 +1,39 @@
+An Exchange is the real thing that lets you swap assets good example is
+New York Stock Exchange (NYSE) or NSE (national stock Exchange), BSE (Bombay stock Exchange)
+Robinhood, zerodha, groww these are brokers, these are build on top of NSE or BSE 
+We are building an Exchange
+
+
+The current price is the price at which the last trade is happened.
+Time series data, a data of price over time on this Exchange, finally plotted on the graph
+The graph we are seeing is a commonly used library called trading view, which most of the exchanges, price trackers use 
+The orderbook is the list of people that are currently willing to buy or sell this asset, the orderbook is whats make trading possible 
+if you are making an exchange the first thing you have to do is to build all the UI the frontend and backend, the second big thing you have to do is get market makers on board
+
+Orderbook is the central book where 2 types of order are present the seller and the buyer
+the broker sitting in the middle and maintaining these orders, whenever 2 parties come, where a deal can happen it takes that off the order book lets them the deal is done and swaps the assets
+The bottom orders with green in the order book are known as bids people willing to buy the stock, the above orders with red in the order book are known as asks
+The thing below is, in the orderbook is I am willing to buy for this much
+The thing above is, in the orderbook is I am willing to sell for this much 
+
+you have to talk to a bunch of market makers and tell them we are building an exchange pls come and provide liquidity, pls come put some orders on both the sides (I am willing to buy on x, I am willing to sell on y )
+
+A limit order states that I want to buy TATA stocks 1 quantity but at Rs 200/stock, you strictly put up a limit, ki I will not give a penny above rs 200, if you can fill this order great
+If you can't fill up this order put this on the order book, all these order we can see on the orderbook are limit orders can be placed by retail as well 
+The orderbook keeps on changing very quickly based on the algorithm the market makers run 
+
+Usually when you trade there is a currency on one side for ex USDC is a currency, INR is a currency and an asset on the another side ETH (ethereum) is an asset, TATA is an asset 
+whenever you trade ETH-BTC (eth for btc), if you ever say ki I want to sell one ethereum give me bitcoin in return, usually there are 2 markets that you are trading on in a single swap 
+You are first selling your ethereum for USDC, then you are using you USDC to buy bitcoin, you use combination of 2 markets here
+
+Base asset -> The asset that is being traded(TATA)
+Quote asset -> The asset that is being traded with. 
+People usually prefer more liquid exchanges, the more liquid your exchanges the better exchanges, the more traders will be there, more people want to trade there
+more liquidity means better prices, the price you get is much better on a liquid exchange 
+Market markers that keep the orderbook liquid 
+
+The api/v1/order/quote endpoint of the backend is really an important endpoint especially for retail users 
+
+All orders are limit orders -> Every time you place an order, you should give it some price expectations, even if you are placing a market order, The exchange automatically adds the constraints and creates a limit order 
+you might want to create a market order, but the exchange will make sure it gets whats called a quote,
+It gets ki yaar if a person is coming and about to spend 8cr for a house the quote will be 3.334cr 
