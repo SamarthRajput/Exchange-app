@@ -37,3 +37,11 @@ The api/v1/order/quote endpoint of the backend is really an important endpoint e
 All orders are limit orders -> Every time you place an order, you should give it some price expectations, even if you are placing a market order, The exchange automatically adds the constraints and creates a limit order 
 you might want to create a market order, but the exchange will make sure it gets whats called a quote,
 It gets ki yaar if a person is coming and about to spend 8cr for a house the quote will be 3.334cr 
+
+
+We will try to hit the backend, assume the backend of the exchange exists, we will hit the websocket server of an existing exchange and make our frontend dynamic 
+We are proxing a lot of requests from our server to the exchange, so the exchange might rate limit our proxy server, might not as well 
+We are proxing these requests through our own server because of some cors issues, if you directly try to hit the exchange api from the browser, the browser will give you some cors issues 
+which is why we are proxing the server apis 
+
+we will create our own proxy server and deploy it on aws ourselfves. 
