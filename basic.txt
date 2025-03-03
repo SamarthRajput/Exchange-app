@@ -45,3 +45,6 @@ We are proxing these requests through our own server because of some cors issues
 which is why we are proxing the server apis 
 
 we will create our own proxy server and deploy it on aws ourselfves. 
+
+The api/v1/depth?symbol=${market} -> this returns data of the shape, ki the asks are an array of tuples, tuple is an array with 2 values 
+The first value of which has 2 values, the 2nd value of which has 2 values so on and so forth 
