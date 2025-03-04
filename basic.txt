@@ -48,3 +48,9 @@ we will create our own proxy server and deploy it on aws ourselfves.
 
 The api/v1/depth?symbol=${market} -> this returns data of the shape, ki the asks are an array of tuples, tuple is an array with 2 values 
 The first value of which has 2 values, the 2nd value of which has 2 values so on and so forth 
+
+The person who is willing to buy is at max giving 133.44 and the person who is willing to sell is selling at max 133.45, then how is the price is 133.47 ?
+On the particular exchange, 133.47 is the price on which the last trade happened and the market moved after it, just because the current bid is 133.44 and curr ask is 133.45 doesnot means 
+ki the price can be 133.47, the price can still be 133.47 because the last trade when it happened the orderbook might be different
+
+The backend returns you 100 bids and 100 asks, we have to return the best 15 asks and 15 bids to the frontend 

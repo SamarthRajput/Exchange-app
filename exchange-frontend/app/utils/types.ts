@@ -1,11 +1,12 @@
 export interface KLine {
-    open: string;
     close: string;
-    start: string;
     end: string;
     high: string;
     low: string;
+    open: string;
     quoteVolume: string;
+    start: string;
+    // trades: string;
     volume: string;
 }
 
@@ -19,6 +20,7 @@ export interface Trade {
 }
 
 export interface Depth {
+    // bids is an array of an array with 2 values 
     bids: [string, string][],
     asks: [string, string][],
     lastUpdateId:  string
