@@ -1,5 +1,4 @@
 export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
-
     let currentTotal = 0;
     const relevantAsks = asks.slice(0, 15);
     // The backend returns us the relevantAsks as
@@ -20,7 +19,7 @@ export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
      */
     // console.log(relevantAsks);
     let asksWithTotal: [string, string, number][] = [];
-    for(let i = relevantAsks.length; i >= 0; i++){
+    for(let i = relevantAsks.length - 1; i >= 0; i++){
         const [price, quantity] = relevantAsks[i];
         asksWithTotal.push([price, quantity, currentTotal = currentTotal + Number(quantity)]);
     }

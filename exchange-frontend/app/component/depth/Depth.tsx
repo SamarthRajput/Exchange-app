@@ -9,9 +9,10 @@ export function Depth({ market }: {market: string}){
     const [bids, setBids] = useState<[string, string][]>();
     const [asks, setAsks] = useState<[string, string][]>();
     const [price, setPrice] = useState<string>();
-
+    console.log("before useeffect");
     useEffect(() => {
         // Calling the getDepth function and setting the bids and asks array
+        console.log("depth called");
         getDepth(market).then(d => {
             setBids(d.bids.reverse());
             setAsks(d.asks);
@@ -23,8 +24,9 @@ export function Depth({ market }: {market: string}){
         // getKLines(market, "1h", 1640099200, 1640100800).then(t => setPrice(t[0].close));
 
     }, []);
-
-
+        {console.log(price)}
+        {console.log(bids)}
+        {console.log(asks)}
     return <div>
         <TableHeader />
         {asks && <AskTable asks={asks} />}
