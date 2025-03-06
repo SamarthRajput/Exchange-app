@@ -19,7 +19,8 @@ export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
      */
     // console.log(relevantAsks);
     let asksWithTotal: [string, string, number][] = [];
-    for(let i = relevantAsks.length - 1; i >= 0; i++){
+    // problem occured here i am using i++, instead of i--
+    for(let i = relevantAsks.length - 1; i >= 0; i--){
         const [price, quantity] = relevantAsks[i];
         asksWithTotal.push([price, quantity, currentTotal = currentTotal + Number(quantity)]);
     }
@@ -43,22 +44,21 @@ export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
 
 
     return <div>
-        {asksWithTotal.map(([price, quantity, total]) => <Ask maxTotal={maxTotal} key={price} price={price} quantity={quantity} total={total} />)};
+        {asksWithTotal.map(([price, quantity, total]) => <Ask maxTotal={maxTotal} key={price} price={price} quantity={quantity} total={total} />)}
     </div>
 }
 
 
 function Ask({price, quantity, total, maxTotal}: {price: string, quantity: string, total: number, maxTotal: number}){
     return <div
-    style={{
-        display: "flex",
-        position: "relative",
-        width: "100%",
-        backgroundColor: "transparent",
-        overflow: "hidden",
-    }}
-    >
-
+        style={{
+            display: "flex",
+            position: "relative",
+            width: "100%",
+            backgroundColor: "transparent",
+            overflow: "hidden",
+        }}
+        >
     <div
         style={{
             position: "absolute",
@@ -70,16 +70,16 @@ function Ask({price, quantity, total, maxTotal}: {price: string, quantity: strin
             transition: "width 0.3s ease-in-out",
         }}
     ></div>
-    <div className="flex justify-between text-xs w-full">
-        <div>
-            {price}
+        <div className="flex justify-between text-xs w-full">
+            <div>
+                {price}
+            </div>
+            <div>
+                {quantity}
+            </div>
+            <div>
+                {total?.toFixed(2)}
+            </div>
         </div>
-        <div>
-            {quantity}
-        </div>
-        <div>
-            {total?.toFixed(2)}
-        </div>
-    </div>
     </div>
 }

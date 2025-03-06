@@ -10,7 +10,7 @@ export function BidTable({ bids } : { bids: [string, string][] }){
 
 
     return <div>
-        {bidsWithTotal?.map(([price, quantity, total]) => <Bid maxTotal={total} key={price} price={price} quantity={quantity} total={total}/>)}
+        {bidsWithTotal?.map(([price, quantity, total]) => <Bid maxTotal={maxTotal} key={price} price={price} quantity={quantity} total={total}/>)}
     </div>
 }
 

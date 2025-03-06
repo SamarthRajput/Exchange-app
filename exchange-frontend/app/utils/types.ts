@@ -6,7 +6,7 @@ export interface KLine {
     open: string;
     quoteVolume: string;
     start: string;
-    // trades: string;
+    trades: string;
     volume: string;
 }
 
@@ -28,8 +28,8 @@ export interface Depth {
 
 export interface Ticker {
     "firstPrice": string,
-    "lastPrice": string,
     "high": string,
+    "lastPrice": string,
     "low": string,
     "priceChange": string,
     "priceChangePercent": string,

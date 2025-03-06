@@ -54,3 +54,16 @@ On the particular exchange, 133.47 is the price on which the last trade happened
 ki the price can be 133.47, the price can still be 133.47 because the last trade when it happened the orderbook might be different
 
 The backend returns you 100 bids and 100 asks, we have to return the best 15 asks and 15 bids to the frontend 
+
+
+Ref lets you do 2 things 
+1. they let you attach to a div element
+if we ever want to do 
+document.getElementById("chart"); 
+<div id="chart" />
+we can do this in react but we shouldnt do this  
+The better way to do the above steps is to use, useRef hook that react provides you 
+if you ever want a reference to a div a good idea is to use ref 
+we first define a ref , the type of the ref is <HTMLDivElement> and we intialise to a null
+const chartRef = useRef<HTMLDivElement>(null);
+<div ref={chartRef} />

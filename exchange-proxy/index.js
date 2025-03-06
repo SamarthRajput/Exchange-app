@@ -27,7 +27,7 @@ app.use('/', createProxyMiddleware({
     }
 }));
 
-const port = 3006;
+const port = 3005;
 app.listen(port, () => {
     console.log(`Proxy server running on http://localhost:${port}`);
 })

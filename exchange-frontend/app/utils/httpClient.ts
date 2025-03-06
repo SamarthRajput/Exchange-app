@@ -3,7 +3,7 @@ import { Depth, KLine, Ticker, Trade } from "./types";
 
 // Basic backend points that we have to render them on our frontend 
 
-const BASE_URL = "http://localhost:3006/api/v1";
+const BASE_URL = "http://localhost:3005/api/v1";
 
 // the getTicker function accepts market as an argument 
 export async function getTicker(market: string): Promise<Ticker> {
@@ -28,7 +28,6 @@ export async function getTickers(): Promise<Ticker[]> {
 // The getDepth function returns us the orderbook with asks and the bids 
 export async function getDepth(market: string): Promise<Depth> {
     const response = await axios.get(`${BASE_URL}/depth?symbol=${market}`);
-    console.log(response);
     return response.data;
 }
 
