@@ -1,6 +1,6 @@
 export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
     let currentTotal = 0;
-    const relevantAsks = asks.slice(0, 18);
+    const relevantAsks = asks.slice(0, 16);
     // The backend returns us the relevantAsks as
     /*
      * 129.93 10
