@@ -67,3 +67,23 @@ if you ever want a reference to a div a good idea is to use ref
 we first define a ref , the type of the ref is <HTMLDivElement> and we intialise to a null
 const chartRef = useRef<HTMLDivElement>(null);
 <div ref={chartRef} />
+
+
+Our browser connects with the websocket server and our browser first needs to tell ki i want
+SOL_USDC@trade -> SOL_USDC market ka trading data -> trade data means all the realtime trades that are happening, i want all the current trades that are happening in realtime pls return me all of them, I want to show them to my user 
+SOL_USDC@depth -> SOL_USDC market ka depth data -> depth data means ki i want current realtime order book changes, if the price or quantity is changing pls let me know so that i can rerender on frontend
+SOL_USDC@ticker -> SOL_USDC market ka ticker data -> how is the ticker is changing, so that i can update the specific ticker on the frontend as well 
+
+
+In websocket server we have send a bunch of subscribe's, when we go to landing page we have send a bunch of unsubscribe's
+When we go to landing page we told the websocket server unsubscribe, the websocket server is more sending the data 
+The websocket server begins to listen to events from a pub sub, our engine would eventually publish events on pub sub, ki a trade has happened or the depth has changed because someone has put something on the order book
+and this change would propagate over to the user, incase the user has subscribe to those events 
+
+Backpack exchange websocket server -> wss://ws.backpack.exchange/
+We have to use the singleton pattern to make sure, wherever in our application we use websocket connection a single one is created doesnot matter  
+Creating a SignalingManager file in utils folder 
+Signaling stands for a websocket connection, a websocket connection is also commonly known as Signaling, you are trying to signal to the server something, it returns you back something
+We have created a SignalingManager class which is a singleton, a class which has a private constructor is whats called a singleton, So we cant create multiple instances of the class 
+We want to make sure ki only a single websocket connection is created, you dont keep creating more and more websocket connection, doesnot matter which page we are trying to access this class from
+we will create a single websocket connection 

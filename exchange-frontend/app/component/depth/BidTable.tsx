@@ -1,7 +1,7 @@
 export function BidTable({ bids } : { bids: [string, string][] }){
 
     let currentTotal = 0;
-    const relevantBids = bids.slice(0, 15);
+    const relevantBids = bids.slice(0, 18);
     // console.log(relevantBids);
     // As we keep going down the bids keeps on going down, as people willing to buy at the rate comes down as keeps going down
     // Hence calculating bids with total is as simple as, ki jo bids thi unke take the price, the quantity, and the 3rd field currentTotal
