@@ -38,6 +38,7 @@ export class SignalingManager {
         }
 
         this.ws.onmessage = (event) => {
+            console.log("Raw WebSocket Message:", event.data);
             const message = JSON.parse(event.data);
             const type = message.data.e;
             if(this.callbacks[type]){
@@ -61,15 +62,18 @@ export class SignalingManager {
                         callback({ bids: updatedBids, asks: updatedAsks });
                     }
 
-                    // if(type === "trade"){
-                    //     console.log(message.data);
-                    //     //     const isBuyerMaker =  message.data.m;
-                    //     //     const price = message.data.p;
-                    //     //     const quantity = message.data.q;
-                    //     //     const timestamp =  message.data.t;
+                    if(type === "trade"){
+                        const newTrade: Partial<Trade> = {
+                            id: message.data.t,
+                            isBuyerMaker: message.data.m,
+                            price: message.data.p,
+                            quantity: message.data.q,
+                            quoteQuantity: message.data.q,
+                            timestamp: message.data.T
+                        }
 
-                    //     // callback({ isBuyerMaker: isBuyerMaker, price: price, quantity: quantity, timestamp: timestamp});
-                    // }
+                        callback(newTrade);
+                    }
                 });
             }
         }
