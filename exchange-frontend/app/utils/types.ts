@@ -12,7 +12,7 @@ export interface KLine {
 
 export interface Trade {
     "id": number,
-    "isBuyerMaker": number,
+    "isBuyerMaker": boolean,
     "price": string,
     "quantity": string,
     "quoteQuantity": string,

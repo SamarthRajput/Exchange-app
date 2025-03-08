@@ -40,7 +40,7 @@ export default function Page(){
                         </div>
                     </div>
                     </div>
-                    {order === "depth" ? <Depth market={market as string}/> : <Trades />}
+                    {order === "depth" ? <Depth market={market as string}/> : <Trades market={market as string} />}
                 </div>
             </div>
         </div>
