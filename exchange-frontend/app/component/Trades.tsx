@@ -9,16 +9,24 @@ export function Trades({market} : {market: string}) {
     const [trades, setTrades] = useState<Trade[]>([]);
 
     useEffect(() => {
-        getTrades(market).then((d) => {
-            setTrades(d)
-        });
+        getTrades(market).then(setTrades);
 
-        SignalingManager.getInstance().registerCallback("trade", (data: Partial<Trade[]>) => setTrades(prevTrade => ([
-            
-        ])), `TRADE-${market}`);
-
-
-
+        // **** Need to get data from websocket server for trades component 
+        // SignalingManager.getInstance().registerCallback("trade", (data: Partial<Trade>) => setTrades(prevTrades => ({
+        //     ...prevTrades,
+        //         id: data?.id,
+        //         isBuyerMaker: data?.isBuyerMaker,
+        //         price: data?.price,
+        //         quantity: data?.quantity,
+        //         timestamp: data?.timestamp,
+        //         quoteQuantity: data?.quoteQuantity
+        //     })), `TRADE-${market}`);
+        // SignalingManager.getInstance().sendMessage({"method": "SUBSCRIBE", params: [`trade.${market}`]});
+        // return () => {
+        //     SignalingManager.getInstance().deRegisterCallback("trade", `trade=${market}`);
+        //     SignalingManager.getInstance().sendMessage({"method": "UNSUBCRIBE",  params: [`trade.${market}`]});
+        // } 
+        
     }, [market]);
 
     return <div className="flex flex-col grow overflow-y-hidden">    

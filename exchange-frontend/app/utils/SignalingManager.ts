@@ -61,17 +61,15 @@ export class SignalingManager {
                         callback({ bids: updatedBids, asks: updatedAsks });
                     }
 
-                    if(type === "trade"){
-                        const newTrade: Partial<Trade> = {
-                            isBuyerMaker: message.data.isBuyerMaker,
-                            price: message.data.price,
-                            quantity: message.data.quantity,
-                            quoteQuantity: message.data.quoteQuantity,
-                            timestamp: message.data.timestamp
-                        }
+                    // if(type === "trade"){
+                    //     console.log(message.data);
+                    //     //     const isBuyerMaker =  message.data.m;
+                    //     //     const price = message.data.p;
+                    //     //     const quantity = message.data.q;
+                    //     //     const timestamp =  message.data.t;
 
-                        callback(newTrade);
-                    }
+                    //     // callback({ isBuyerMaker: isBuyerMaker, price: price, quantity: quantity, timestamp: timestamp});
+                    // }
                 });
             }
         }
