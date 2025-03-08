@@ -43,3 +43,8 @@ export async function getKLines(market: string, interval: string, startTime: num
     const data: KLine[] = response.data;
     return data.sort((x, y) => (Number(x.end) < Number(y.end) ? -1 : 1));
 }
+
+export async function getMarkets(){
+    const response = await axios.get(`${BASE_URL}/markets`);
+    return response.data;
+}
