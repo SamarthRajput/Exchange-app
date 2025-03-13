@@ -38,3 +38,7 @@ export interface Ticker {
     "trades": string,
     "volume": string
 }
+
+export interface Market {
+    
+}
