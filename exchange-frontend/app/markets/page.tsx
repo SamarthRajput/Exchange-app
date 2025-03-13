@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react"
 import { getMarkets } from "../utils/httpClient";
+import { NavBar } from "../component/NavBar";
 
 export default function Page(){
 
@@ -14,6 +15,6 @@ export default function Page(){
     }, [])
 
     return <div>
-
+        <NavBar />
     </div>
 }
