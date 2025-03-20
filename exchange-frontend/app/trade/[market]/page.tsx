@@ -27,7 +27,7 @@ export default function Page(){
                         <div className="items-center justify-start flex-row flex space-x-2">
                             <div className={`flex justify-center flex-col cursor-pointer rounded-lg py-1 text-sm font-medium outline-none hover:opacity-90 h-[32px] px-3 
                                         ${order === "depth" ? "text-[rgb(244_244_246)] bg-[rgb(32,33,39)]" : "text-[rgb(150_159_175)]"}`}
-                                        onClick={(e) => {
+                                        onClick={() => {
                                             setOrder("depth");
                                         }}>
                                 Book

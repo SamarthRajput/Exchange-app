@@ -1,22 +1,22 @@
 "use client";
 
-    import { getDepth, getKLines, getTicker, getTrades } from "@/app/utils/httpClient";
-    import { useEffect, useState } from "react";
-    import { AskTable } from "./AskTable";
-    import { BidTable } from "./BidTable";
+import { getDepth, getKLines, getTicker, getTrades } from "@/app/utils/httpClient";
+import { useEffect, useState } from "react";
+import { AskTable } from "./AskTable";
+import { BidTable } from "./BidTable";
 import { SignalingManager } from "@/app/utils/SignalingManager";
 
-    export function Depth({ market }: {market: string}){
-        const [bids, setBids] = useState<[string, string][]>();
-        const [asks, setAsks] = useState<[string, string][]>();
-        const [price, setPrice] = useState<string>();
+export function Depth({ market }: {market: string}){
+    const [bids, setBids] = useState<[string, string][]>();
+    const [asks, setAsks] = useState<[string, string][]>();
+    const [price, setPrice] = useState<string>();
     
-        useEffect(() => {
-            const init = async () => {
-                SignalingManager.getInstance().registerCallback("depth", (data: any)  => {
+    useEffect(() => {
+        const init = async () => {
+            SignalingManager.getInstance().registerCallback("depth", (data: any)  => {
 
-                    setBids((originalBids) => {
-                        const bidsAfterUpdate = [...(originalBids || [])];
+                setBids((originalBids) => {
+                    const bidsAfterUpdate = [...(originalBids || [])];
 
                         for(let i = 0; i < bidsAfterUpdate.length; i++){
                             for(let j = 0; j < data.bids.length; j++) {
@@ -28,10 +28,10 @@ import { SignalingManager } from "@/app/utils/SignalingManager";
                         }
                         // Filtering out the bids array of tuples and showing only the values which have amount is not equal to 0.00
                         return bidsAfterUpdate.filter(([_, amount]) => amount !== "0.00");
-                    })
+                })
 
-                    setAsks((originalAsks) => {
-                        const asksAfterUpdate = [...(originalAsks || [])];
+                setAsks((originalAsks) => {
+                    const asksAfterUpdate = [...(originalAsks || [])];
                         
                         for(let i = 0; i < asksAfterUpdate.length; i++){
                             for(let j = 0; j < data.bids.length; j++){
@@ -73,12 +73,12 @@ import { SignalingManager } from "@/app/utils/SignalingManager";
         </div>
     }
 
-    function TableHeader(){
-        return <div className="flex justify-between text-xs">
-            <div className="text-white">Price</div>
-            <div className="text-slate-500">Size</div>
-            <div className="text-slate-500">Total</div>
-        </div>
-    }
+function TableHeader(){
+    return <div className="flex justify-between text-xs">
+        <div className="text-white">Price</div>
+        <div className="text-slate-500">Size</div>
+        <div className="text-slate-500">Total</div>
+    </div>
+}
 
 

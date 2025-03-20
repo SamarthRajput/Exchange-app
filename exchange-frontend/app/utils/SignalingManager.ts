@@ -40,7 +40,7 @@ export class SignalingManager {
         this.ws.onmessage = (event) => {
             console.log("Raw WebSocket Message:", event.data);
             const message = JSON.parse(event.data);
-            const type = message.data.e;
+            const type = message?.data?.e;
             if(this.callbacks[type]){
                 this.callbacks[type].forEach(({ callback }: { callback: any }) => {
                     if(type === "ticker"){

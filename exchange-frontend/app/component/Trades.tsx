@@ -13,7 +13,7 @@ export function Trades({market} : {market: string}) {
             setTrades(d);
         });
 
-        // // **** Need to get data from websocket server for trades component 
+        // websocket server for trades component 
         SignalingManager.getInstance().registerCallback("trade", (data: Partial<Trade>) => {
             if(data){
                 let newData: Trade = {

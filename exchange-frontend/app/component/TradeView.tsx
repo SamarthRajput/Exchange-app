@@ -21,7 +21,9 @@ export function TradeView({
             // Math.floor(new Date().getTime() / 1000) -> till today, in an hourly fashion on the particular market 
             Math.floor(new Date().getTime() / 1000));
         }
-        catch(e){ }
+        catch(err){
+            console.log(err);
+         }
 
         if(chartRef){
             if(chartManagerRef.current) {

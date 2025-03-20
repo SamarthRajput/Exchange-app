@@ -1,8 +1,9 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 export function SwapUI({ market }: {market: string}) {
-    const [amount, setAmount] = useState('');
+    // const [amount, setAmount] = useState('');
     const [activeTab, setActiveTab] = useState('buy');
     const [type, setType] = useState('limit');
     const [price, setPrice] = useState("0.00");
@@ -41,7 +42,7 @@ export function SwapUI({ market }: {market: string}) {
                                 />
                                 <div className="flex flex-row absolute right-1 top-1 p-2">
                                     <div className="relative">
-                                        <img src="/usdc.webp" className="w-6 h-6" />
+                                        <Image src="/usdc.webp" height={24} width={24} alt=""/>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +60,7 @@ export function SwapUI({ market }: {market: string}) {
                             />
                             <div className="flex flex-row absolute right-1 top-1 p-2">
                                 <div className="relative">
-                                    <img src="/sol.webp" className="w-6 h-6" />
+                                    <Image src="/sol.webp" height={24} width={24} alt=""/>
                                 </div>
                             </div>
                         </div>
