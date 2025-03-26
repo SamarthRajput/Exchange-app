@@ -16,7 +16,7 @@ export function Trades({market} : {market: string}) {
         // websocket server for trades component 
         SignalingManager.getInstance().registerCallback("trade", (data: Partial<Trade>) => {
             if(data){
-                let newData: Trade = {
+                const newData: Trade = {
                     id: data.id ? data.id : 0,
                     isBuyerMaker: data.isBuyerMaker ? data.isBuyerMaker : false,
                     price: data.price ? data.price: "",

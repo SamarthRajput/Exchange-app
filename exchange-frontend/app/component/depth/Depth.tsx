@@ -1,6 +1,6 @@
 "use client";
 
-import { getDepth, getKLines, getTicker, getTrades } from "@/app/utils/httpClient";
+import { getDepth, getTicker, getTrades } from "@/app/utils/httpClient";
 import { useEffect, useState } from "react";
 import { AskTable } from "./AskTable";
 import { BidTable } from "./BidTable";

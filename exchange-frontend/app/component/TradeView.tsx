@@ -50,7 +50,6 @@ export function TradeView({
             chartManagerRef.current = chartManager;
         }
     };
-
     // If the market changes, the chart will rerender and hence the useEffect will be called 
     useEffect(() => {
         // we are calling the init() function anytime the market changes or the reference to the div changes which is holding my chart  
