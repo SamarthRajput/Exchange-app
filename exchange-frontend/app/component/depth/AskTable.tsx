@@ -18,7 +18,7 @@ export const AskTable = ( {asks} :{ asks: [string, string][] }) => {
      * 129.93 10
      */
     // console.log(relevantAsks);
-    let asksWithTotal: [string, string, number][] = [];
+    const asksWithTotal: [string, string, number][] = [];
     // problem occured here i am using i++, instead of i--
     for(let i = relevantAsks.length - 1; i >= 0; i--){
         const [price, quantity] = relevantAsks[i];

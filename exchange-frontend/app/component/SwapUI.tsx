@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export function SwapUI({ market }: {market: string}) {
     // const [amount, setAmount] = useState('');
@@ -101,7 +101,14 @@ export function SwapUI({ market }: {market: string}) {
 </div>
 }
 
-function LimitButton({ type, setType }: { type: string, setType: any }) {
+
+// setType is a setter function that accepts a string value
+// the correct type for setType in typescript is 
+// React.Dispatch<React.SetStateAction<string>>
+// React.Dispatch: Represents the state updater function
+// React.SetStateAction<string>: Indicates that the state being updated is of type string
+
+function LimitButton({ type, setType }: { type: string, setType: React.Dispatch<React.SetStateAction<string>> }) {
     return <div className="flex flex-col cursor-pointer justify-center py-2" onClick={() => setType('limit')}>
     <div className={`text-sm font-medium py-1 border-b-2 ${type === 'limit' ? "border-[rgb(76,148,255)] text-[rgb(244,244,246)]" : "border-transparent text-baseTextMedEmphasis hover:border-[rgb(244,244,246)] hover:text-[rgb(244,244,246)]"}`}>
         Limit
@@ -109,7 +116,7 @@ function LimitButton({ type, setType }: { type: string, setType: any }) {
 </div>
 }
 
-function MarketButton({ type, setType }: { type: string, setType: any }) {
+function MarketButton({ type, setType }: { type: string, setType: React.Dispatch<React.SetStateAction<string>> }) {
     return  <div className="flex flex-col cursor-pointer justify-center py-2" onClick={() => setType('market')}>
     <div className={`text-sm font-medium py-1 border-b-2 ${type === 'market' ? "border-[rgb(76,148,255)] text-[rgb(244,244,246)]" : "border-b-2 border-transparent text-baseTextMedEmphasis hover:border-[rgb(244,244,246)] hover:text-[rgb(244,244,246)]"} `}>
         Market
@@ -117,7 +124,7 @@ function MarketButton({ type, setType }: { type: string, setType: any }) {
     </div>
 }
 
-function BuyButton({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: any }) {
+function BuyButton({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: React.Dispatch<React.SetStateAction<string>> }) {
     return <div className={`flex flex-col mb-[-2px] flex-1 cursor-pointer justify-center border-b-2 p-4 ${activeTab === 'buy' ? 'border-b-[rgba(0,194,120,.4)] bg-[rgba(0,194,120,.12)]' : 'border-b-[#cccccc] hover:border-b-baseBorderFocus'}`} onClick={() => setActiveTab('buy')}>
         <p className="text-center text-sm font-semibold text-[rgb(0,194,120)]">
             Buy
@@ -125,7 +132,7 @@ function BuyButton({ activeTab, setActiveTab }: { activeTab: string, setActiveTa
     </div>
 }
 
-function SellButton({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: any }) {
+function SellButton({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: React.Dispatch<React.SetStateAction<string>> }) {
     return <div className={`flex flex-col mb-[-2px] flex-1 cursor-pointer justify-center border-b-2 p-4 ${activeTab === 'sell' ? 'border-b-[rgba(234,56,59,.5)] bg-[rgba(234,56,59,.12)]' : 'border-b-[#cccccc] hover:border-b-baseBorderFocus'}`} onClick={() => setActiveTab('sell')}>
         <p className="text-center text-sm font-semibold text-[rgb(253,75,78)]">
             Sell

@@ -7,7 +7,7 @@ export function AllMarkets({ data }: { data : MarketData[] }){
 
     const router = useRouter();
     const handleNavigation = (symbol: string) => {
-        let path = `/trade/${symbol.toUpperCase()}_USDC`;
+        const path = `/trade/${symbol.toUpperCase()}_USDC`;
         router.push(path);
     }
 
@@ -148,7 +148,7 @@ export function AllMarkets({ data }: { data : MarketData[] }){
 }
 
 // Creating a helper function to convert the big numbers into Trillion, Billions and Millions
-const formatNumber = (num : any) => {
+const formatNumber = (num: number) => {
     if(num >= 1_000_000_000_000){
         return `$${(num / 1_000_000_000_000).toFixed(2)}T`
     }

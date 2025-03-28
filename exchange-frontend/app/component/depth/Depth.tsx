@@ -6,6 +6,7 @@ import { AskTable } from "./AskTable";
 import { BidTable } from "./BidTable";
 import { SignalingManager } from "@/app/utils/SignalingManager";
 
+
 export function Depth({ market }: {market: string}){
     const [bids, setBids] = useState<[string, string][]>();
     const [asks, setAsks] = useState<[string, string][]>();
