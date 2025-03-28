@@ -14,7 +14,7 @@ export function NavBar(){
           <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
             {/* Logo */}
             <div className="flex ml-4 md:ml-10 text-3xl md:text-4xl font-bold">
-              <span className="text-green-400">Crypto</span><span className="text-white">Dive</span>
+              <span className="text-green-400">Swap</span><span className="text-white">ify</span>
             </div>
     
             {/* Mobile Menu Button */}
@@ -28,10 +28,10 @@ export function NavBar(){
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-10">
               <Link href="/">Home</Link>
-              <Link href="/trade/SOL_USDC">Trade</Link>
               <Link href="/markets">Market</Link>
-              <Link href="#learncrypto">Learn</Link>
-              <Link href="#contactus">Support</Link>
+              <Link href="/trade/SOL_USDC">Trade</Link>
+              <Link href="/#learncrypto">Learn</Link>
+              <Link href="/#contactus">Support</Link>
             </div>
     
             {/* Login Button (Hidden on Mobile) */}

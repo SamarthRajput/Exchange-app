@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Depth, KLine, Ticker, Trade } from "./types";
+import { Depth, KLine, MarketData, Ticker, Trade } from "./types";
 
 // Basic backend points that we have to render them on our frontend 
 
@@ -44,7 +44,7 @@ export async function getKLines(market: string, interval: string, startTime: num
     return data.sort((x, y) => (Number(x.end) < Number(y.end) ? -1 : 1));
 }
 
-export async function getMarkets(){
-    const response = await axios.get(`${BASE_URL}/markets`);
+export async function getMarkets(): Promise<MarketData[]> {
+    const response = await axios.get(`https://price-indexer.workers.madlads.com/?ids=solana,pyth-network,jito-governance-token,tether,bonk,helium,helium-mobile,bitcoin,ethereum,dogwifcoin,jupiter-exchange-solana,parcl,render-token,sharky-fi,tensor,wormhole,wen-4,cat-in-a-dogs-world,book-of-meme,raydium,hivemapper,kamino,drift-protocol,io,zeta,shuffle-2,pepe,shiba-inu,chainlink,uniswap,ondo-finance,starknet,blur,worldcoin-wld,polyhedra-network,layerzero`);
     return response.data;
 }

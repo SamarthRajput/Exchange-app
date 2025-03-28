@@ -38,7 +38,7 @@ export const Footer = () => {
   
         {/* Copyright */}
         <div className="text-center text-gray-400 text-sm mt-10">
-          © Copyright 2024, all rights reserved by cryptodive
+          © Copyright 2024, all rights reserved by Swapify
         </div>
       </footer>
     );

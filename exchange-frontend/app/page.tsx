@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ContactUs } from "./component/ContactUs";
-import { FAQ } from "./component/Faq";
-import { Footer } from "./component/Footer";
-import { LearnCrypto } from "./component/LearnCrypto";
-import { MarketTable } from "./component/MarketTable";
+import { ContactUs } from "./component/landing_components/ContactUs";
+import { FAQ } from "./component/landing_components/Faq";
+import { Footer } from "./component/landing_components/Footer";
+import { LearnCrypto } from "./component/landing_components/LearnCrypto";
+import { MarketTable } from "./component/landing_components/MarketTable";
 import { NavBar } from "./component/NavBar";
 
 export default function Home() {
@@ -26,10 +26,10 @@ const Hero = () => {
   return (
     <section className="text-center text-white mt-16">
       <h2 className="text-[#00FFA0] text-6xl font-bold">
-        Secure & Intuitive <br /> Crypto Trading
+        Secure & Intuitive <br /> Assets Trading
       </h2>
       <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-4">
-        Trade using CryptoDive Exchange. Swap assets with 0% commission. <br/>Best exchange for your daily use.
+        Trade using Swapify. Swap assets with 0% commission. <br/>Best exchange for your daily use.
       </p>
       <div className="mt-6 flex justify-center space-x-4">
         <Link href={"/markets"} className="px-8 py-3 bg-[#00FFA0] text-black font-bold rounded-full hover:bg-green-300">

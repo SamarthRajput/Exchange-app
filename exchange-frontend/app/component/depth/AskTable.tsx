@@ -71,14 +71,14 @@ function Ask({price, quantity, total, maxTotal}: {price: string, quantity: strin
         }}
     ></div>
         <div className="flex justify-between text-xs w-full">
-            <div>
+            <div className="font-semibold">
                 {price}
             </div>
-            <div>
-                {quantity}
+            <div className="font-semibold">
+                {parseFloat(quantity).toLocaleString()}
             </div>
-            <div>
-                {total?.toFixed(2)}
+            <div className="font-semibold">
+                {parseFloat(total?.toFixed(2)).toLocaleString()}
             </div>
         </div>
     </div>
