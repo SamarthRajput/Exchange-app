@@ -54,7 +54,7 @@ export function TradeView({
     useEffect(() => {
         // we are calling the init() function anytime the market changes or the reference to the div changes which is holding my chart  
         init();
-    }, [market, chartRef, init]);
+    }, [market, chartRef]);
 
     return (
         <>

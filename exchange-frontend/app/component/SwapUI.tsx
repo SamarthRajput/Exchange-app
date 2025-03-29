@@ -9,6 +9,10 @@ export function SwapUI({ market }: {market: string}) {
     const [price, setPrice] = useState("0.00");
     const [quantity, setQuantity] = useState("0.00");
 
+    // Extract the base symbol from the market
+    const baseSymbol = market.split("_")[0];
+    const logoUrl = `/logos/${baseSymbol.toLowerCase()}.webp`
+
     return <div>
         <div className="flex flex-col">
             <div className="flex flex-row h-[60px]">
@@ -60,7 +64,7 @@ export function SwapUI({ market }: {market: string}) {
                             />
                             <div className="flex flex-row absolute right-1 top-1 p-2">
                                 <div className="relative">
-                                    <Image src="/sol.webp" height={24} width={24} alt=""/>
+                                    <Image src={logoUrl} height={24} width={24} alt=""/>
                                 </div>
                             </div>
                         </div>

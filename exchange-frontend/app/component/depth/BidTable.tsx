@@ -5,7 +5,7 @@ export function BidTable({ bids } : { bids: [string, string][] }){
     // console.log(relevantBids);
     // As we keep going down the bids keeps on going down, as people willing to buy at the rate comes down as keeps going down
     // Hence calculating bids with total is as simple as, ki jo bids thi unke take the price, the quantity, and the 3rd field currentTotal
-    const bidsWithTotal: [string, string, number][] = relevantBids.map(([price, quantity]) => [price, quantity, currentTotal = currentTotal + Number(quantity)]);
+    let bidsWithTotal: [string, string, number][] = relevantBids.map(([price, quantity]) => [price, quantity, currentTotal = currentTotal + Number(quantity)]);
     const maxTotal = relevantBids.reduce((acc, [_, quantity]) => acc + Number(quantity), 0);
 
 
