@@ -26,7 +26,7 @@ You can find the proxy server's source code here:
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/your-username/swapify-exchange.git
+   git clone https://github.com/SamarthRajput/Exchange-app
    ```
 
 ### Running the Application
