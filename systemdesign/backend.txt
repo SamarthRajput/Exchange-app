@@ -1,0 +1,28 @@
+A very bad exchange would not have, In memory orderbooks, they would just store the orderbooks in a database 
+If any request comes to your backend of type /api/v1/order, ki i want to place an order, if it reaches the database, then your orderbook is going to be extermely slow
+if every order that is coming is reaching some storage, then no market maker would trade on our exchange because it will take a every long time for them recieve an acknowledgment, ki han your order has been placed, if we store all our order in a database
+Most request that comes in an exchange comes for either order placement on the book , or order cancellation on the book
+
+Engine is the core central server, which is maintaining users balances and all the orderbooks.
+At some point the engine needs to be either bunch of servers, or at the very least multiple nodejs processes or multiple rust threads or multiple java threads 
+
+We have to make sure all the orders are happening sequentially, if all the orders are happening parallely, then we have concurrency issue 
+The engine will create the orderbook as well, the in memory orderbook and if there are matches, it will ofcourse swap the assests across to users, it will also maintain the users balances 
+If the engine ever goes down, we can recreate the state from genesis, from the beginning of an exchange, we can just run through the queue again and recreate the state on this engine
+
+The better way to recreate state, is that you keep snapshotting from time to time store the snapshot somewhere, and when ever the engines goes down, whenever it comes backup
+takes the latest snapshot, and whatever events happened since the snapshot, you can just use those events to recreate the final state 
+
+If someone is working at Paytm and have database access, he/ she they can change the backend or balances, which is why we have multiple engines running, thats why restrict developer access 
+We have mulitple engines running, they all doing the same thing, they all pulling from the same queue one by one and processing all the messages, and in the end they all should arrive at the same state 
+and if they dont that is when you know something weird has happened in our system
+
+A better way for backend systems to talk to each other is through systems like either through a queue or through a pubsub (publisher subscriber)
+Whenever we send a request, it goes on to a queue, gets proccesed by the engine, engine sends it back to the pubsub, you get back response from the pub sub 
+and then you return it back to the user 
+We can totally get rid of this pubsub  and our exchange doesnot support immediate response, you give us an order, we will later on tell you, you can keep polling for the response, we dont immediate return you how much of your order is filled 
+then the api and engine dont need to talk to each other 
+But if we want to build something like binance or want to build an architecture where the user immediate gets back how much of there order was placed and what were the fills that actually happened, then the engine needs to talk to the API and using pubsub engine can to the api  
+
+The engine needs to publish to another pubsub, ki yaar depth has changed at SOL_USDC, these bids and asks have changed and ofc there needs to be a websocket server, that the ends users connects to 
+We also connects to a websocket server that gives us real time updates, we send a subscribe message, if the user unsubscribe you have to also unsubscribe
