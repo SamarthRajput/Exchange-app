@@ -26,3 +26,8 @@ But if we want to build something like binance or want to build an architecture 
 
 The engine needs to publish to another pubsub, ki yaar depth has changed at SOL_USDC, these bids and asks have changed and ofc there needs to be a websocket server, that the ends users connects to 
 We also connects to a websocket server that gives us real time updates, we send a subscribe message, if the user unsubscribe you have to also unsubscribe
+
+The class that is managing the subscription to the pubsub is called the Subscription Manager class 
+When the first user asked for the market, that's when we subscribe to the market on the pubsub 
+When the last user leaves from the market, thats when we unsubscribe from the market on the pubsub 
+All the trades and klines are stored in database
