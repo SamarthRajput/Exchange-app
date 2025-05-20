@@ -31,3 +31,46 @@ The class that is managing the subscription to the pubsub is called the Subscrip
 When the first user asked for the market, that's when we subscribe to the market on the pubsub 
 When the last user leaves from the market, thats when we unsubscribe from the market on the pubsub 
 All the trades and klines are stored in database
+
+The function sendAndAwait is send a message to the engine and await for a response from the engine, whenever the engine processes this message, it will return us back a response so sendAndAwait for that message
+Whenever you do an await on any function that means the return type of the function is promise 
+
+The sum function takes 2 numbers as an input, returns a number 
+function sum (a: number, b: number): number {
+    return a + b;
+}
+
+But what if this function was an async function, if it is an async function, the return type is not a number any more, the return type is a promise of type number 
+So whenever you have a function, on which you are awaiting on, it is returning you a promise only 
+async function sum (a: number, b: number ): Promise<number> {
+    return a + b;
+}
+
+Whenever you create a promise, it takes an 1 argument as an input, which is a function 
+Whenever we are placing an order, it gives us 2 options 
+1. IOC means immediate or cancel, if we select IOC and place an order, then it will either fulfill your order completely or it will cancel your order completely
+it will not partially put it on order book 
+2. Post Only, ki i want my order to posted on the orderbook, i dont want it to be matched immediately, i never wanted to be the taker, i wanted to be the maker 
+
+
+Running backend locally
+1. go to docker folder ->  cd backend/docker
+run the command -> docker compose up 
+this is will start the time series db and redis locally
+
+2. go the api server -> cd backend/api 
+run the commands -> npm i 
+-> npm run dev 
+that will start our api server 
+
+3. go to the engine folder -> cd/backend/ engine
+run the command -> npm run dev 
+this will start our engine 
+
+4. go to the websocket server -> cd backend/ws 
+run the command -> npm run dev
+this will start our websocket server
+
+5. go to the market maker folder -> cd backend/mm 
+run the command -> npm run dev
+the orderbook will get populated, repopulate
