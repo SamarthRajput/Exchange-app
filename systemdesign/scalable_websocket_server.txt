@@ -1,0 +1,14 @@
+Creating scalable websocket server 
+means creating chess.com, gather.town or websocket stream in an exchange
+the architecture is fairly similar in a scalable way 
+Scalable means if we have 100, 1000 users who are subscribed to a chess.com game 
+
+We can push events from a server using websockets, ki if you want full duplex communication, if you want the server to able to push events to the client
+as well as the client to be able to push events to the server, you need to use websockets server 
+
+We can use a pub sub (publisher subscriber), a pub sub lets the websocket servers subscribe to events 
+So we have just created another layer behind our fleet of websocket servers, which let your websocket servers communicate with each other 
+
+To keep things fair, that means everyone have same latency, the hi there message goes to the pubsub it goes to websocket server 1 and also comes back to websocket server 2 
+and then gets forwarded to person 1, person 2 and person 4
+That is how we build a scalable websocket fleet of servers

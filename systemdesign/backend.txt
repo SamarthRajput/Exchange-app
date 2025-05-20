@@ -74,3 +74,6 @@ this will start our websocket server
 5. go to the market maker folder -> cd backend/mm 
 run the command -> npm run dev
 the orderbook will get populated, repopulate
+
+The websocket module of the exchange, it been written in a scalable way and all of this logic can be as it used to build any realtime application 
+But if we want to create a multiplayer game, gather town, chess in all of these cases you would want to build a very similar architecture and this architecture did use pub sub 
