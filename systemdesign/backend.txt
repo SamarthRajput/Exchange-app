@@ -77,3 +77,9 @@ the orderbook will get populated, repopulate
 
 The websocket module of the exchange, it been written in a scalable way and all of this logic can be as it used to build any realtime application 
 But if we want to create a multiplayer game, gather town, chess in all of these cases you would want to build a very similar architecture and this architecture did use pub sub 
+
+Singleton pattern ensures, through out your app only a single time, the logic runs, no more instances should be created throughout the app 
+Singleton pattern ensures it by creating a private constructor
+We create a static function called getInstance(), that creates a static variable/attribute called instance, the static instance is also directly connected to UserManager
+
+One thing about websocket servers is, you should avoid upscaling, downscaling very quickly.
