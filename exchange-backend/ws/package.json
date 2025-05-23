@@ -10,5 +10,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@types/redis": "^4.0.10",
+    "@types/ws": "^8.18.1",
+    "redis": "^5.1.0",
+    "ws": "^8.18.2"
+  }
 }
