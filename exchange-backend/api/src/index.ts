@@ -10,11 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("api/v1/order", orderRouter);
-app.use("api/v1/depth", depthRouter);
-app.use("api/v1/trades", tradeRouter);
-app.use("api/v1/klines", klinesRouter);
-app.use("api/v1/tickers", tickersRouter);
+app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/depth", depthRouter);
+app.use("/api/v1/trades", tradeRouter);
+app.use("/api/v1/klines", klinesRouter);
+app.use("/api/v1/tickers", tickersRouter);
 
 
 app.listen(3000, () => {

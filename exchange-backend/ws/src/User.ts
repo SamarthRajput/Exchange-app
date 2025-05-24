@@ -1,4 +1,7 @@
 import { WebSocket } from "ws";
+import { SubscriptionManager } from "./SubscriptionManager";
+import { SUBSCRIBE, UNSUBSCRIBE } from "./types/in";
+import { OutgoingMessage } from "./types/out";
 
 export class User {
     private id: string;
@@ -20,7 +23,7 @@ export class User {
         this.subscriptions = this.subscriptions.filter(s => s !== subscription);
     }
 
-    emit(message: ){
+    emit(message: OutgoingMessage){
         this.ws.send(JSON.stringify(message));
     }
 
@@ -28,7 +31,14 @@ export class User {
         this.ws.on("message", (message: string) => {
             const parsedMessage = JSON.parse(message);
             if(parsedMessage.method === SUBSCRIBE){
-                parsedMessage.params.forEach(s =>)
+                // TODO: Check the type of s 
+                // @ts-ignore
+                parsedMessage.params.forEach(s => SubscriptionManager.getInstance().subscribe(this.id, s));
+            }
+
+            if(parsedMessage.method === UNSUBSCRIBE){
+                // @ts-ignore
+                parsedMessage.params.forEach(s => SubscriptionManager.getInstance().unsubscribe(this.id, parsedMessage.params[0]));
             }
         });
     }
