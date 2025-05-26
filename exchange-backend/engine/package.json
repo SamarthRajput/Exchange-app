@@ -15,6 +15,10 @@
   "type": "commonjs",
   "dependencies": {
     "@types/redis": "^4.0.10",
-    "redis": "^5.1.0"
+    "redis": "^5.1.0",
+    "vitest": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21"
   }
 }
