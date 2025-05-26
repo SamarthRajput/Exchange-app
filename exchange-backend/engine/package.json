@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b",
+    "start": "WITH_SNAPSHOT=true node dist/index.js",
+    "dev": "npm run build && WITH_SNAPSHOT=true npm run start",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@types/redis": "^4.0.10",
+    "redis": "^5.1.0"
+  }
 }

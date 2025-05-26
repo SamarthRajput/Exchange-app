@@ -45,5 +45,40 @@ async function main(){
 
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    main();
 }
+
+async function cancelBidsMoreThan(openOrders: any[], price: number){
+    let promises: any[] = [];
+    openOrders.map(o => {
+        if(o.side === "buy" && (o.price > price || Math.random() < 0.1)){
+            promises.push(axios.delete(`${BASE_URL}/api/v1/order`, {
+                data: {
+                    orderId: o.orderId,
+                    market: MARKET
+                }
+            }));
+        }
+    });
+    await Promise.all(promises);
+    return promises.length;
+}
+
+
+async function cancelAsksLessThan(openOrders: any[], price: number){
+    let promises: any[] = [];
+    openOrders.map(o => {
+        if(o.side === "sell" && (o.price < price || Math.random() < 0.5)){
+            promises.push(axios.delete(`${BASE_URL}/api/v1/order`, {
+                data: {
+                    orderId: o.orderId,
+                    market: MARKET
+                }
+            }));
+        }
+    });
+
+    await Promise.all(promises);
+    return promises.length;
+}
+
+main();
