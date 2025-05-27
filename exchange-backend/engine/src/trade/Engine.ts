@@ -57,9 +57,9 @@ export class Engine {
                     RedisManager.getInstance().sendToApi(clientId, {
                         type: "ORDER_PLACED",
                         payload: {
-                            orderId: orderId,
-                            executedQty: executedQty,
-                            fills: fills
+                            orderId,
+                            executedQty,
+                            fills
                         }
                     });
                 } catch (e) {

@@ -16,7 +16,7 @@ export type MessageToApi =  {
     type: "ORDER_PLACED",
     payload: {
         orderId: string,
-        executedQty: string,
+        executedQty: number,
         fills: {
             price: string,
             qty: number,

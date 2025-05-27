@@ -1,6 +1,7 @@
 import { createClient, RedisClientType } from "redis"
 import { ORDER_UPDATE, TRADE_ADDED } from "./types"
 import { MessageToApi } from "./types/toApi"
+import { WsMessage } from "./types/toWs"
 
 type DbMessage =  {
     type: typeof TRADE_ADDED,
@@ -45,7 +46,7 @@ export class RedisManager {
         this.client.lPush("db_processor", JSON.stringify(message));
     }
 
-    public publishMessage(channel: string, message: DbMessage){
+    public publishMessage(channel: string, message: WsMessage){
         this.client.publish(channel, JSON.stringify(message));
     }
 
