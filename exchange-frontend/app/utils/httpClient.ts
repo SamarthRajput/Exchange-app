@@ -3,7 +3,7 @@ import { Depth, KLine, MarketData, Ticker, Trade } from "./types";
 
 // Basic backend points that we have to render them on our frontend 
 
-const BASE_URL = "http://localhost:3005/api/v1";
+const BASE_URL = "https://exchange-proxy-server.onrender.com/api/v1";
 
 // the getTicker function accepts market as an argument 
 export async function getTicker(market: string): Promise<Ticker> {
