@@ -3,7 +3,7 @@ import { Depth, KLine, MarketData, Ticker, Trade } from "./types";
 
 // Basic backend points that we have to render them on our frontend 
 
-const BASE_URL = "http://localhost:3005/api/v1";
+const BASE_URL = "https://exchange-proxy-server.vercel.app/api/v1";
 
 // the getTicker function accepts market as an argument 
 export async function getTicker(market: string): Promise<Ticker> {
@@ -45,6 +45,6 @@ export async function getKLines(market: string, interval: string, startTime: num
 }
 
 export async function getMarkets(): Promise<MarketData[]> {
-    const response = await axios.get(`https://price-indexer.workers.madlads.com/?ids=solana,pyth-network,jito-governance-token,tether,bonk,helium,helium-mobile,bitcoin,ethereum,dogwifcoin,jupiter-exchange-solana,parcl,render-token,sharky-fi,tensor,wormhole,wen-4,cat-in-a-dogs-world,book-of-meme,raydium,hivemapper,kamino,drift-protocol,io,zeta,shuffle-2,pepe,shiba-inu,chainlink,uniswap,ondo-finance,starknet,blur,worldcoin-wld,polyhedra-network,layerzero`);
+    const response = await axios.get(`https://price-indexer.workers.madlads.com/?ids=solana,pyth-network,jito-governance-token,tether,bonk,helium,helium-mobile,bitcoin,ethereum,dogwifcoin,jupiter-exchange-solana,parcl,render-token,sharky-fi,tensor,wormhole,wen-4,cat-in-a-dogs-world,book-of-meme,raydium,hivemapper,kamino,drift-protocol,io,zeta,shuffle-2,pepe,shiba-inu,chainlink,uniswap,ondo-finance,starknet,blur,worldcoin-wld,layerzero`);
     return response.data;
 }

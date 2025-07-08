@@ -28,7 +28,10 @@ export function Depth({ market }: {market: string}){
                             }
                         }
                         // Filtering out the bids array of tuples and showing only the values which have amount is not equal to 0.00
-                        return bidsAfterUpdate.filter(([_, amount]) => amount !== "0.00");
+                        return bidsAfterUpdate.filter(([_, amount]) => {
+                            const numAmount = Number(amount);
+                            return numAmount !== 0;
+                        });
                 })
 
                 setAsks((originalAsks) => {
@@ -42,7 +45,10 @@ export function Depth({ market }: {market: string}){
                                 }
                             }
                         }
-                        return asksAfterUpdate.filter(([_, amount]) => amount !== "0.00");
+                        return asksAfterUpdate.filter(([_, amount]) => {
+                            const numAmount = Number(amount);
+                            return numAmount !== 0;
+                        });
                     })
                 }, `DEPTH-${market}`);
 
